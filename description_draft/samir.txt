@@ -1,0 +1,50 @@
+\subsection{Controller Class Definition:}
+
+ \textbf{Controller class:} is the main Activity in the mobile app by which other activity will be called,  First of all, the Controller will check the connection status as it initialed, if there is a connection available, if so it will set \textbf{connectionStatus} to be true, else it will be false. Then \textbf{User class} will be called to allow user to login, or register, then create user object, the user object will be used to display user info on the screen, or edit them.
+The \textbf{mainView} which controlled by the controller should has multiple buttons, map "initialized by default on sub-Activity, chat, and the Assistant, and when a user push one of these buttons, activity will populate to a new sub-activity, that handle the requested function.
+
+\textbf{Methods definition:}
+
+\textbf{getConnectionStatus():} used to return connection Status.
+\textbf{initializeAgent():} used to connect to the agent and populate to new sub-activity to view the agent.
+\textbf{initializeVoiceRecogination():} used to connect to the voice Recognition and perform the requested command.
+\textbf{initializeP2PConnectivity():} used to populate to the P2PConnectivity activity.
+\textbf{initialzeMap():} used to populate to the map activity.
+
+\subsection{Map Class Definition:}
+
+\textbf{Map class:} is the class that handle the connection between Geo-Location API and the Mobile APP, and perform all functions related to Geo-Location API.
+The class will be called by controller by default after the user log-in as a sub-activity, and it inherit P2P connectivity.
+
+\textbf{Methods definition:}
+
+\textbf{setupMap():} used to setup connection between the Geo-location API and set all required configuration.
+\textbf{showDangerZones():} connect to the API to set Danger zones Layers on the Map. 
+\textbf{showShelters():} set shelters location on the map the recommend shortest path from user location to shelters.
+\textbf{showUserLocation():} set user location on the map
+\textbf{showMap():} used to populate map on the screen
+\textbf{calcLatitude():} used to  set the Latitude Attribute using the GPS.
+\textbf{calcLongitude():} used to  set the Longitude Attribute using the GPS.
+
+\subsection{Chatting Class Definition:}
+
+\textbf{Chatting Class:} is the class used to handle chatting between users online and offline, so it inherit P2PConnectivity to work in offline state, the user join a group based on his location to chat with other users in the same area to ask for help or help others users. it will operate as sup-activity when the user push the chat button on the main view.
+
+\textbf{Methods definition:}
+
+\textbf{joinChatGroup():} used to connect user to a chat group based on his location.
+\textbf{disconnectFromGroup():} used to disconnect form chat group.
+\textbf{receiveData(): } used to receive data from the chat group to print it on the user screen.
+\textbf{sendata(): } used to send data to chat group.
+
+\subsection{P2PConnectivity Class Definition:}
+
+\textbf{P2PConnectivity:} is the class used to  provides an easier way to create and manage sessions between users without internet connection, only via Wi-Fi or the Bluetooth. the class is inherited by map and chatting class.
+
+\textbf{Methods definition:}
+
+\textbf{makeP2PConnection():} is used to establish peer to peer connection with other mobile device.
+\textbf{disconnetP2PConnection():} is used to disconnect from established connection.
+\textbf{receiveData(): } used to receive data from other device that connected with.
+\textbf{sendData(): } used to send data to other device that  connected with.
+

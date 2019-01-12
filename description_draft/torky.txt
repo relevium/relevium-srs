@@ -1,0 +1,16 @@
+\subsection{\textbf{User Class Definition:}}
+
+\textbf{User Class:} The user class contain all the information about the user, that the app uses to populate all the fields in the profile tab. All the class variables are set on the class constructor, in contrast the user can be an \textbf{\textit{internal}} or \textbf{\textit{external}} client, both \textit{\textbf{inherit}}  the class \textbf{\textit{User}}. 
+
+\textbf{Methods definition:}
+
+\textbf{verfiyLogin():}  This method takes the user ID and password or user token and authenticate it with our servers to verify user log-in credentials, finally it returns a Boolean which it's value depends on success or failure of the log-in process.
+\textbf{register():} This method takes the user to the registration process, which asks him/her about all the required data to fill.
+\textbf{updateProfile():} This method is used to update any user profile info and return Boolean depends on its succeed on updating or not.
+\textbf{getProfileInfo():} This method is used by the application to populate all the fields of the the profile tab and it return an ArrayList of all the different user variable objects.
+
+\subsection{\textbf{Inherited Classes:}}
+
+\textbf{Internal Client Class: }  The internal client class is the class responsible for all the clients who registered through our servers, it handles the user log-in process, register and credentials loss.
+
+\textbf{External Client Class: }  The external client class is the class responsible for all the clients who sign in through external API(s) eg: ( GMAIL, FACEBOOK , etc ) and get their token and save it in our servers for future log-in. The class also get the data of the user from the external API after claiming the token, finally it redirect the new users to the register process with completed fields of their claimed data from the external API. If the external client did register before, then he is sent to the Home screen of Relevium application.
