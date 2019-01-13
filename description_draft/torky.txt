@@ -14,3 +14,13 @@
 \textbf{Internal Client Class: }  The internal client class is the class responsible for all the clients who registered through our servers, it handles the user log-in process, register and credentials loss.
 
 \textbf{External Client Class: }  The external client class is the class responsible for all the clients who sign in through external API(s) eg: ( GMAIL, FACEBOOK , etc ) and get their token and save it in our servers for future log-in. The class also get the data of the user from the external API after claiming the token, finally it redirect the new users to the register process with completed fields of their claimed data from the external API. If the external client did register before, then he is sent to the Home screen of Relevium application.
+
+\section{\textbf{Agent Class Definition:}}
+
+\textbf{Agent Class:} The agent class, is the class responsible for sending the user's queries to our Relevium watchful assistant servers and receive the answer from it.
+
+\textbf{Methods definition:}
+
+\textbf{sendQuery:} This method handles the network communication for sending the user query to our servers .
+\textbf{receiveResponse:} This method handles the network communication for receiving the appropriate answer of the user queries. 
+\textbf{getAnswer:} This method is used by other classes to display the recived answer from the servers.

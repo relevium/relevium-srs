@@ -21,12 +21,14 @@
 \usepackage{graphicx}
 \usepackage{grffile}
 \usepackage{svg}
-\usepackage{wrapfig}
+\usepackage{makeidx}
+
+
 \usepackage[bookmarks=true]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \hypersetup{
-    bookmarks=false,    % show bookmarks bar?
+    % bookmarks=false,    % show bookmarks bar?
     pdftitle={Software Requirement Specification},    % title
     pdfauthor={Mahmoud Khaled},                     % author
     pdfsubject={Relevium SRS},                        % subject of the document
@@ -38,12 +40,14 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.3}
+\def\myversion{0.4}
 \date{\today}
 %\title{%
 
 %}
 \usepackage{hyperref}
+
+\makeindex
 \begin{document}
 
 \begin{flushright}
@@ -85,6 +89,13 @@
 \end{flushright}
 
 \tableofcontents
+\begingroup
+\let\clearpage\relax
+\listoffigures
+\endgroup
+
+
+\newpage
 
 
 \chapter*{Revision History}
@@ -100,6 +111,8 @@
         Agent Specifications & November 27, 2018 & __ & v0.2\\
         \hline
         Illustrations Draft & December 23, 2018 & __ & v0.3\\
+        \hline
+        Populating Appendix & January 10, 2018 & __ & v0.4\\
         \hline
 	   % 31 & 32 & 33 & 34\\
 	   & & & \\
@@ -123,7 +136,7 @@ The purpose of this document is to give a detailed description of the requiremen
 % to be inherited by detailed requirements, or whether every requirement statement 
 % is to have its own priority.$>$
 
-[TODO]
+% [TODO]
 
 \section{Intended Audience and Reading Suggestions}
 % $<$Describe the different types of reader that the document is intended for, 
@@ -382,7 +395,7 @@ Entities are the agent's mechanism for identifying and extracting useful data fr
 
 While intents allow the agent to understand the motivation behind a particular user input, entities are used to pick out specific pieces of information that the users mention. Any important data we want to get from a user's request will have a corresponding entity.
 
-[TODO add our entities]
+% [TODO add our entities]
 
 
 \subsubsection{Event}
@@ -468,7 +481,7 @@ Predict hazardous environments and alert users.
 The system leverage a third-party Disaster Management Server (DMS), mobile device with our application installed on it and Connect DMS to get updates about disaster (tsunami, cyclone or flood) to get automatic notification of upcoming disaster.
 
 
-\section{Direct users to shelters and highlight Danger zones}
+\section{Direct users to shelters and highlight danger zones}
 % Mark users and areas as `safe' or `in-danger'.
 
 
@@ -598,7 +611,7 @@ be acceptable and the response time should be between \textbf{(7 - 10) seconds} 
 \subsection{Network of mobiles during the disaster (MANET)}
 This feature is meant to be used in offline mode and during disasters, so it should have maximum time of \textbf{10 seconds} for critical conversations between people.
 
-\newpage
+% \newpage
 
 %--------------------------Skipped
 \section{Safety Requirements}
@@ -649,7 +662,7 @@ Other ``external" factors which can be used alongside the user’s identificatio
 This mobile app should guarantee availability as it will be available every time and it must maintain lowest MTBF (mean time between failure) also it must meet correctness because any misinformation could lead to dangerous situation for the user, it should be flexible to be used easily in hard times, also it should offer the testers an instructions about how the application should be tested and what is the correct input and output, it also should be adaptable to any environment changes, app must meet portability condition as it used in a critical situations, the last but not least is the maintainability concern and it should be maintained at least one time per week.
 
 
-\section{Business Rules}
+% \section{Business Rules}
 % $<$List any operating principles about the product, such as which individuals or 
 % roles can perform which functions under specific circumstances. These are not 
 % functional requirements in themselves, but they may imply certain functional 
@@ -680,105 +693,143 @@ This mobile app should guarantee availability as it will be available every time
     
 \clearpage
 
-\hspace{-2.5cm}
-\begin{minipage}{0.7\textwidth}
+
+\begin{figure}[ht!]
+    \centering
+    % \includesvg[width=0.95\textwidth]{img2/ClassD-Torky.svg}
+    \includegraphics[angle=90, height=.92\textheight]{img2/ClassD-Torky.pdf}
+    \caption{Class Diagram - Primary Controller}
+    \label{fig:classdig1}
+\end{figure}
+
 
  %% Type description here
+     \textbf{User Class:} The user class contain all the information about the user, that the app uses to populate all the fields in the profile tab. All the class variables are set on the class constructor, in contrast the user can be an \textbf{\textit{internal}} or \textbf{\textit{external}} client, both \textit{\textbf{inherit}}  the class \textbf{\textit{User}}.
+\begin{itemize}
+
+
+\item[$\nabla$]  \textbf{verfiyLogin()}  This method takes the user ID and password or user token and authenticate it with our servers to verify user log-in credentials, finally it returns a Boolean which it's value depends on success or failure of the log-in process.
+\item[$\nabla$] \textbf{register()} This method takes the user to the registration process, which asks him/her about all the required data to fill.
+\item[$\nabla$] \textbf{updateProfile()} This method is used to update any user profile info and return Boolean depends on its succeed on updating or not.
+\item[$\nabla$] \textbf{getProfileInfo()} This method is used by the application to populate all the fields of the the profile tab and it return an ArrayList of all the different user variable objects.
+
+\end{itemize}
+
+ \textbf{Internal Client Class}  The internal client class is the class responsible for all the clients who registered through our servers, it handles the user log-in process, register and credentials loss.
+ 
+ \textbf{External Client Class} The external client class is the class responsible for all the clients who sign in through external API(s) eg: (Gmail, Facebook, etc...) and get their token and save it in our servers for future log-in. The class also get the data of the user from the external API after claiming the token, finally it redirect the new users to the register process with completed fields of their claimed data from the external API. If the external client did register before, then he/she will be sent to the Home screen of Relevium application.
+% end of description here
+% \clearpage
+%%% continue description 
+% \subsection{Controller Class Definition:}
+
+
+     \textbf{Controller class:} is the main Activity in the mobile app by which other activity will be called,  First of all, the Controller will check the connection status as it initialed, if there is a connection available, if so it will set \textbf{connectionStatus} to be true, else it will be false. Then \textbf{User class} will be called to allow user to login, or register, then create user object, the user object will be used to display user info on the screen, or edit them.
+The \textbf{mainView} which controlled by the controller should has multiple buttons, map ``initialized" by default on sub-Activity, chat, and the Assistant, and when a user push one of these buttons, activity will populate to a new sub-activity, that handle the requested function.
 
 \begin{itemize}
-    \item \textbf{User Class:} The user class contain all the information about the user, that the app uses to populate all the fields in the profile tab. All the class variables are set on the class constructor, in contrast the user can be an \textbf{\textit{internal}} or \textbf{\textit{external}} client, both \textit{\textbf{inherit}}  the class \textbf{\textit{User}}.
+% \textbf{Methods definition:}
 
-    \item  \textbf{verfiyLogin()}  This method takes the user ID and password or user token and authenticate it with our servers to verify user log-in credentials, finally it returns a Boolean which it's value depends on success or failure of the log-in process.
-\item \textbf{register()} This method takes the user to the registration process, which asks him/her about all the required data to fill.
-\item \textbf{updateProfile()} This method is used to update any user profile info and return Boolean depends on its succeed on updating or not.
-\item \textbf{getProfileInfo()} This method is used by the application to populate all the fields of the the profile tab and it return an ArrayList of all the different user variable objects.
-
-\item \textbf{Internal Client Class}  The internal client class is the class responsible for all the clients who registered through our servers, it handles the user log-in process, register and credentials loss.
-\item \textbf{External Client Class} The external client class is the class responsible for all the clients who sign in through external API(s) eg: (Gmail, Facebook, etc...) and get their token and save it in our servers for future log-in. The class also get the data of the user from the external API after claiming the token, finally it redirect the new users to the register process with completed fields of their claimed data from the external API. If the external client did register before, then he is sent to the Home screen of Relevium application.
+\item[$\nabla$] \textbf{getConnectionStatus()} used to return connection Status.
+\item[$\nabla$] \textbf{initializeAgent()} used to connect to the agent and populate to new sub-activity to view the agent.
+\item[$\nabla$] \textbf{initializeVoiceRecogination()} used to connect to the voice Recognition and perform the requested command.
+\item[$\nabla$] \textbf{initializeP2PConnectivity()} used to populate to the P2PConnectivity activity.
+\item[$\nabla$] \textbf{initialzeMap()} used to populate to the map activity.
 \end{itemize}
-%%% end of description here
-\end{minipage}
-\begin{minipage}{0.4\textwidth}
-\hspace{-1.5cm}\includesvg[height=\textheight]{img2/ClassD-Torky.svg}
-\end{minipage}
 
-\clearpage
-
-%%% continue description 
-\subsection{Controller Class Definition:}
-
- \textbf{Controller class:} is the main Activity in the mobile app by which other activity will be called,  First of all, the Controller will check the connection status as it initialed, if there is a connection available, if so it will set \textbf{connectionStatus} to be true, else it will be false. Then \textbf{User class} will be called to allow user to login, or register, then create user object, the user object will be used to display user info on the screen, or edit them.
-The \textbf{mainView} which controlled by the controller should has multiple buttons, map "initialized by default on sub-Activity, chat, and the Assistant, and when a user push one of these buttons, activity will populate to a new sub-activity, that handle the requested function.
-
-\textbf{Methods definition:}
-
-\textbf{getConnectionStatus():} used to return connection Status.
-\textbf{initializeAgent():} used to connect to the agent and populate to new sub-activity to view the agent.
-\textbf{initializeVoiceRecogination():} used to connect to the voice Recognition and perform the requested command.
-\textbf{initializeP2PConnectivity():} used to populate to the P2PConnectivity activity.
-\textbf{initialzeMap():} used to populate to the map activity.
-
-\subsection{Map Class Definition:}
+% \subsection{Map Class Definition:}
 
 \textbf{Map class:} is the class that handle the connection between Geo-Location API and the Mobile APP, and perform all functions related to Geo-Location API.
 The class will be called by controller by default after the user log-in as a sub-activity, and it inherit P2P connectivity.
 
-\textbf{Methods definition:}
+% \textbf{Methods definition:}
+\begin{itemize}
+\item[$\nabla$] \textbf{setupMap()} used to setup connection between the Geo-location API and set all required configuration.
+\item[$\nabla$] \textbf{showDangerZones()} connect to the API to set Danger zones Layers on the Map. 
+\item[$\nabla$] \textbf{showShelters()} set shelters location on the map the recommend shortest path from user location to shelters.
+\item[$\nabla$] \textbf{showUserLocation()} set user location on the map
+\item[$\nabla$] \textbf{showMap()} used to populate map on the screen
+\item[$\nabla$] \textbf{calcLatitude()} used to  set the Latitude Attribute using the GPS.
+\item[$\nabla$] \textbf{calcLongitude()} used to  set the Longitude Attribute using the GPS.
+\end{itemize}
 
-\textbf{setupMap():} used to setup connection between the Geo-location API and set all required configuration.
-\textbf{showDangerZones():} connect to the API to set Danger zones Layers on the Map. 
-\textbf{showShelters():} set shelters location on the map the recommend shortest path from user location to shelters.
-\textbf{showUserLocation():} set user location on the map
-\textbf{showMap():} used to populate map on the screen
-\textbf{calcLatitude():} used to  set the Latitude Attribute using the GPS.
-\textbf{calcLongitude():} used to  set the Longitude Attribute using the GPS.
-
-\subsection{Chatting Class Definition:}
+% \subsection{Chatting Class Definition:}
 
 \textbf{Chatting Class:} is the class used to handle chatting between users online and offline, so it inherit P2PConnectivity to work in offline state, the user join a group based on his location to chat with other users in the same area to ask for help or help others users. it will operate as sup-activity when the user push the chat button on the main view.
 
-\textbf{Methods definition:}
+% \textbf{Methods definition:}
 
-\textbf{joinChatGroup():} used to connect user to a chat group based on his location.
-\textbf{disconnectFromGroup():} used to disconnect form chat group.
-\textbf{receiveData(): } used to receive data from the chat group to print it on the user screen.
-\textbf{sendata(): } used to send data to chat group.
+\begin{itemize}
+\item[$\nabla$]  \textbf{joinChatGroup()} used to connect user to a chat group based on his location.
+\item[$\nabla$] \textbf{disconnectFromGroup()} used to disconnect form chat group.
+\item[$\nabla$] \textbf{receiveData()} used to receive data from the chat group to print it on the user screen.
+\item[$\nabla$] \textbf{sendata()} used to send data to chat group.
+\end{itemize}
 
-\subsection{P2PConnectivity Class Definition:}
+% \subsection{P2PConnectivity Class Definition:}
 
 \textbf{P2PConnectivity:} is the class used to  provides an easier way to create and manage sessions between users without internet connection, only via Wi-Fi or the Bluetooth. the class is inherited by map and chatting class.
 
-\textbf{Methods definition:}
+\begin{itemize}
 
-\textbf{makeP2PConnection():} is used to establish peer to peer connection with other mobile device.
-\textbf{disconnetP2PConnection():} is used to disconnect from established connection.
-\textbf{receiveData(): } used to receive data from other device that connected with.
-\textbf{sendData(): } used to send data to other device that  connected with.
+% \textbf{Methods definition:}
 
+\item[$\nabla$] \textbf{makeP2PConnection()} is used to establish peer to peer connection with other mobile device.
+\item[$\nabla$] \textbf{disconnetP2PConnection()} is used to disconnect from established connection.
+\item[$\nabla$] \textbf{receiveData()} used to receive data from other device that connected with.
+\item[$\nabla$] \textbf{sendData()} used to send data to other device that  connected with.
+\end{itemize}
 \clearpage
 
-
 \begin{figure}[ht!]
-    \centering
-    \includesvg[width=\textwidth]{img2/Class1DIV.svg}
-    % \caption{Caption}
-    \label{fig:my_label}
+    % \centering
+    % \includesvg[width=\textwidth]{img2/Class1DIV.svg}
+    % \hspace{-2cm}\includesvg[scale=0.4]{img2/ClassController.svg}
+    \includegraphics[width=\textwidth]{img2/ClassDClass1DIV.pdf}
+    \caption{Class Diagram - Primary Controller (cont.)}
+    \label{fig:classdiagram2}
 \end{figure}
 
 %% Type description here
-Controller: is the main method which has the control flow it will initialize agent, voice recognition, Peer-to-Peer and map objects.
-Agent: can determine whether the connection is available or not also it make query, send it then get the response.
-Voice recognition: listen to the audio input and convert it from speech to text and store the result (spoken text)
 
+% \subsection{Agent Class Definition:}
+\textbf{Agent Class:} The agent class, is the class responsible for sending the user's queries to our Relevium watchful assistant servers and receive the answer from it.
+\begin{itemize}
+	% \textbf{Methods definition:}
+
+	\item[$\nabla$] \textbf{sendQuery():} This method handles the network communication for sending the user query to our servers .
+	\item[$\nabla$] \textbf{receiveResponse():} This method handles the network communication for receiving the appropriate answer of the user queries. 
+	\item[$\nabla$] \textbf{getAnswer():} This method is used by other classes to display the received answer from the servers.
+\end{itemize}
 
 
 
 \clearpage
 \begin{figure}[ht!]
     \centering
-    \includegraphics[angle=90, height=\textheight]{imgs/erd1.png}
-    % \caption{Caption}
-    \label{fig:my_label}
+    % \includesvg[angle=90, width=1.4\textwidth]{img2/ClassDiagramAgent.svg}
+    \includegraphics[angle=90, height=\textheight]{img2/ClassDiagramAgent.pdf}
+    \caption{Class Diagram - Agent Implementation}
+    \label{fig:classdiagramagent}
+\end{figure}
+
+
+\clearpage
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[angle=0, width=\textwidth]{img2/erd1.pdf}
+    \caption{Entity Relationship Diagram - User}
+    \label{fig:erd1}
+\end{figure}
+
+
+
+\clearpage
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[angle=0, width=\textwidth]{img2/erd2.pdf}
+    \caption{Entity Relationship Diagram - Agent}
+    \label{fig:erd2}
 \end{figure}
 
 % \begin{figure}
@@ -793,8 +844,8 @@ Voice recognition: listen to the audio input and convert it from speech to text 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=\textwidth]{img2/UseCaseDiagram1.pdf}
-    % \caption{Use Case}
-    \label{fig:my_label}
+    \caption{Use Case Diagram - Application Interaction}
+    \label{fig:usecase1}
 \end{figure}
 
 %% Type description here
@@ -810,36 +861,37 @@ he can also interact with the map to navigate danger zones and safe zones(shelte
 \begin{figure}[ht!]
     \centering
     % \includesvg[angle=90,scale=0.8]{imgs/DFDDiagram1.svg}
-    \includegraphics[angle=90, height=\textheight]{imgs/DFDDiagram1.pdf}
-    % \caption{Information Movement}
-    \label{fig:dfd1}
+    \includegraphics[angle=90, height=.95\textheight]{img2/SequenceDiagram2.pdf}
+    \caption{Sequence Diagram - Utterance Route}
+    \label{fig:sequence2}
+\end{figure}
+
+% \clearpage
+
+% \begin{figure}[ht!]
+%     \centering
+%     \includegraphics[angle=90, height=.95\textheight]{imgs/DFDDiagram2.pdf}
+%     % \caption{Caption}
+%     \label{fig:dfd2}
+% \end{figure}
+
+
+\clearpage
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[angle=90, height=.95\textheight]{imgs/SequenceDiagram1.pdf}
+    \caption{Sequence Diagram - Communication Process}
+    \label{fig:sequencediagram1}
 \end{figure}
 
 \clearpage
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[angle=90, height=\textheight]{imgs/DFDDiagram2.pdf}
-    % \caption{Caption}
-    \label{fig:my_label}
-\end{figure}
-
-
-\clearpage
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[angle=90, height=\textheight]{imgs/SequenceDiagram1.pdf}
-    % \caption{Caption}
-    \label{fig:my_label}
-\end{figure}
-
-\clearpage
-
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[angle=90, height=\textheight]{imgs/StatechartDiagram1.pdf}
-    % \caption{Caption}
-    \label{fig:my_label}
+    \includegraphics[angle=90, height=.95\textheight]{imgs/StatechartDiagram1.pdf}
+    \caption{State Chart Diagram - Intent Matching}
+    \label{fig:statechartdiagram1}
 \end{figure}
 
 
