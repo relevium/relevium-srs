@@ -1,17 +1,37 @@
-\subsection{Controller Class Definition:}
-
- \textbf{Controller class:} is the main Activity in the mobile app by which other activity will be called,  First of all, the Controller will check the connection status as it initialed, if there is a connection available, if so it will set \textbf{connectionStatus} to be true, else it will be false. Then \textbf{User class} will be called to allow user to login, or register, then create user object, the user object will be used to display user info on the screen, or edit them.
-The \textbf{mainView} which controlled by the controller should has multiple buttons, map "initialized by default on sub-Activity, chat, and the Assistant, and when a user push one of these buttons, activity will populate to a new sub-activity, that handle the requested function.
+\textbf{Client Class Definition:}
+}
+\textbf{Client class:} is the root class in the client which responsible for establishing connection with the server and instantiate  a user object to access user info and it populate ReleumApp class 
 
 \textbf{Methods definition:}
 
-\textbf{getConnectionStatus():} used to return connection Status.
-\textbf{initializeAgent():} used to connect to the agent and populate to new sub-activity to view the agent.
-\textbf{initializeVoiceRecogination():} used to connect to the voice Recognition and perform the requested command.
-\textbf{initializeP2PConnectivity():} used to populate to the P2PConnectivity activity.
-\textbf{initialzeMap():} used to populate to the map activity.
+\textbf{connectToserver()} used to establish http connection with the server
+\textbf{getUser} used to get user object by the others classes
+\textbf{getConnectionStatus} used to get connectiom status by other classes
 
-\subsection{Map Class Definition:}
+\textbf{ReleviumAPP Class Definition:}
+
+ \textbf{ReleviumApp:} is the main Activity in the mobile app by which other activity will be called,  First of all, the class will check the connection status as it initialed, if there is a connection available, if so it will set \textbf{connectionStatus} to be true, else it will be false. The \textbf{ReleviumApp} which will has multiple buttons, map "initialized by default on sub-Activity, chat, and the Assistant, and when a user push one of these buttons, activity will populate to a new sub-activity, that handle the requested function.
+
+\textbf{Methods definition:}
+
+\textbf{initializeAgent():} linked to assistant button and used to connect to the agent and populate to new sub-activity to view the agent.
+\textbf{initializeChat():} linked to Chat button and used to populate to the Chatting activity and it will use communication protocols defined in communication class.
+\textbf{initialzeMap():} linked to Map button and used to populate to the Map activity and it will use communication protocols defined in communication class.
+
+\textbf{Communication Class Definition:}
+
+\textbf{P2PConnectivity:} is the class used to handle the communication between the server and the client or  provides an easier way to create and manage sessions between users without internet connection, only via Wi-Fi or the Bluetooth. The class is inherited by map and chatting class.
+
+\textbf{Methods definition:}
+
+\textbf{makeP2PConnection():} is used to establish peer to peer connection with other mobile device.
+\textbf{disconnetP2PConnection():} is used to disconnect from established peer- to-peer connection.
+\textbf{makeConnection():} is used to handle  requests between the client and the server or an API server
+\textbf{disconnetConnection():} is used to disconnect from established connection.
+\textbf{receiveData(): } used to receive data from other device that connected with.
+\textbf{sendData(): } used to send data to other device that  connected with.
+
+\textbf{Map Class Definition:}
 
 \textbf{Map class:} is the class that handle the connection between Geo-Location API and the Mobile APP, and perform all functions related to Geo-Location API.
 The class will be called by controller by default after the user log-in as a sub-activity, and it inherit P2P connectivity.
@@ -26,7 +46,8 @@ The class will be called by controller by default after the user log-in as a sub
 \textbf{calcLatitude():} used to  set the Latitude Attribute using the GPS.
 \textbf{calcLongitude():} used to  set the Longitude Attribute using the GPS.
 
-\subsection{Chatting Class Definition:}
+
+\textbf{Chatting Class Definition:}
 
 \textbf{Chatting Class:} is the class used to handle chatting between users online and offline, so it inherit P2PConnectivity to work in offline state, the user join a group based on his location to chat with other users in the same area to ask for help or help others users. it will operate as sup-activity when the user push the chat button on the main view.
 
@@ -34,17 +55,62 @@ The class will be called by controller by default after the user log-in as a sub
 
 \textbf{joinChatGroup():} used to connect user to a chat group based on his location.
 \textbf{disconnectFromGroup():} used to disconnect form chat group.
-\textbf{receiveData(): } used to receive data from the chat group to print it on the user screen.
-\textbf{sendata(): } used to send data to chat group.
+---------------------------------------Class 1 Div------------------------------------------------
+\textbf{ClientAgent Class Definition:}
 
-\subsection{P2PConnectivity Class Definition:}
-
-\textbf{P2PConnectivity:} is the class used to  provides an easier way to create and manage sessions between users without internet connection, only via Wi-Fi or the Bluetooth. the class is inherited by map and chatting class.
+\textbf{client Agent Class:} the class the handle connection between the online agent if the online connection is available, but if the online connection is not available the agent will perform the prediction on the latest downloaded model.
 
 \textbf{Methods definition:}
 
-\textbf{makeP2PConnection():} is used to establish peer to peer connection with other mobile device.
-\textbf{disconnetP2PConnection():} is used to disconnect from established connection.
-\textbf{receiveData(): } used to receive data from other device that connected with.
-\textbf{sendData(): } used to send data to other device that  connected with.
+\textbf{sendQuery():} used to send Query entered from user to server Agent
+\textbf{receiveResponse():} used to receive Response from server Agent
+\textbf{getLatestModel():} used to download current working version model from the server agent.
+\textbf{predict():} used to perform classification on the locally downloaded model
+\textbf{setAnswer()} used to set the answer to the value resulted from predict method.
+\textbf{getVoiceInput():} used to access voice input and it used by inherited classes
+\textbf{getTextInput():} used to access text input and it used by inherited classes
+\textbf{setVoiceOutput():} used to set voice output and mainly used by speech synthesis.
+\textbf{setTextOutput():}used to set text output and mainly used by natural language generation.
+
+
+\textbf{NaturalLanguageProcessing Class Definition:}
+
+\textbf{NLP Class:} is the class that process input text or, voice that converted to text and generate a sparse matrix to apply it a classification model. it also handle text preprocessing.
+
+\textbf{Methods definition}
+
+\textbf{tokenize():} used to convert the corpus to token
+\textbf{stemping():} used to convert words to its origin example "Visiting" will converted to be "Visit".
+\textbf{removeStoppingWord():} used to remove unwanted words from text
+
+\textbf{VoiceRecognition Class Definition:}
+
+\textbf{voice recognition class:} is the class the handle and process the input voice and converting it to readable text by using Neural network based model
+
+\textbf{Methods definition}
+
+\textbf{trainModel():} used to train model on training set
+\textbf{startVoiceRecognition():} used to set the voice recognition to listening mode
+\textbf{recognize():} used to recoginze and convert voice to text
+\textbf{stopVoiceRecognition():} used to release Voice Recognition resources
+
+\textbf{NaturalLanguageGeneration Class Definition:}
+
+\textbf{NLG Class:} is the class that responsible for creating and generating human language text from a machinary text
+
+\textbf{methods definition:}
+
+\textbf{setLexicon():} generate tokens based on specific context.
+\textbf{realizeSentence():} used to realize and generate accurate responce to the user.
+
+\textbf{SpeechSynthesis Class Definition:}
+
+\textbf{Speech Synthesis Class:} is the class responsible for generate human voice dialog for specific context from components of words to form voice signal.
+
+\textbf{Method Definition}
+
+\textbf{trainModel():} used to train model on training sets of texts 
+\textbf{startVoiceSynthesis():} used to start Voice Synthesis operation and start receiving text to convert it to human voice 
+\textbf{Synthesise():} used to apply Synthesis algorithms and convert text to human voice
+\textbf{stopVoiceSynthesis():} used to release Voice Synthesis resources
 

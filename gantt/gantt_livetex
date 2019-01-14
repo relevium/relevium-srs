@@ -1,0 +1,79 @@
+\documentclass{standalone}
+
+\usepackage{pgfgantt}
+
+\begin{document}
+
+
+\begin{ganttchart}
+[
+% x unit=0.3cm,
+hgrid,
+vgrid,
+time slot format=isodate
+% time slot unit=month
+]{2018-10-1}{2019-7-17}
+
+\gantttitlecalendar{year, month=name}\\
+% \gantttitle{2011}{12} \\
+% \gantttitlelist{1,...,12}{1} \\
+\ganttgroup{Relevium Application}{2018-10-1}{2019-7-19} \\
+
+\ganttgroup{Project Initiation}{2018-10-1}{2018-11-1} \\
+\ganttbar{Identify Project Purpose}{2018-10-1}{2018-10-12} \\
+\ganttlinkedbar{Resource Gathering \hspace{250cm}}{2018-10-13}{2018-11-1} \ganttnewline
+
+\ganttgroup{System Concept Development}{2018-11-2}{2018-11-22} \\
+\ganttbar{Define Concept Boundary}{2018-11-2}{2018-11-15} \\
+\ganttlinkedbar{Feasibility Study}{2018-11-16}{2018-11-22} \ganttnewline
+
+\ganttgroup{Planning}{2018-11-23}{2018-12-13} \\
+\ganttbar{Create Project Plan}{2018-11-23}{2018-12-6} \\
+\ganttlinkedbar{Acquire Base Resources}{2018-12-7}{2018-12-13} \ganttnewline
+
+\ganttgroup{Requirement Analysis}{2018-12-14}{2019-1-3} \\
+\ganttbar{Analyze User Needs}{2018-12-14}{2018-12-20} \\ 
+\ganttlinkedbar{Define Function Requirements}{2018-12-21}{2019-1-3} \ganttnewline
+
+\ganttgroup{Design}{2019-1-4}{2019-1-15} \\
+\ganttbar{Designing system models}{2019-1-4}{2019-1-10} \\
+\ganttlinkedbar{Delivering Required Functionality}{2019-1-11}{2019-1-19} \ganttnewline
+
+\ganttgroup{Development}{2019-1-18}{2019-3-19} \\
+\ganttbar{Install system environment}{2019-1-18}{2019-1-22} \\
+\ganttlinkedbar{Create \& Test Database}{2019-1-23}{2019-1-29} \\
+\ganttlinkedbar{Prepare Test Cases}{2019-1-30}{2019-2-5} \\
+\ganttlinkedbar{Convert logical design into a physical model}{2019-2-6}{2019-3-5} \\
+\ganttlinkedbar{Program Refining}{2019-3-6}{2019-3-19} \ganttnewline
+
+\ganttgroup{Integration and testing}{2019-3-20}{2019-4-23} \\
+\ganttbar{Integrating modules}{2019-3-20}{2019-4-9} \\
+\ganttgroup{Confirm Functional \& Non-Functional Requirement}{2019-4-10}{2019-4-16} \\
+\ganttbar{Confirm Each Requirement}{2019-4-10}{2019-4-16} \\
+\ganttbar{Write Test Analysis Report}{2019-4-17}{2019-4-23} \ganttnewline
+
+
+\ganttgroup{Implementation}{2019-04-24}{2019-05-21} \\
+\ganttbar{Deploy System to Production}{2019-04-24}{2019-04-29} \ganttnewline
+\ganttgroup{Alpha Testing}{2019-04-30}{2019-05-6} \\
+\ganttbar{Issue Tracking}{2019-04-30}{2019-05-6} \ganttnewline
+\ganttgroup{Beta Testing}{2019-05-7}{2019-05-20} \\
+\ganttbar{Issue Tracking}{2019-05-7}{2019-05-20} \ganttnewline
+\ganttbar{Final Release}{2019-05-21}{2019-05-21}
+
+% \ganttmilestone{Milestone}{7} \ganttnewline
+% \ganttbar{Final Task}{8}{12}
+
+
+\ganttlink{elem23}{elem24}
+\ganttlink{elem24}{elem26}
+
+\ganttlink{elem28}{elem29}
+\ganttlink{elem29}{elem31}
+
+\ganttlink{elem31}{elem33}
+
+
+
+\end{ganttchart}
+\end{document}

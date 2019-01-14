@@ -24,3 +24,9 @@
 \textbf{sendQuery:} This method handles the network communication for sending the user query to our servers .
 \textbf{receiveResponse:} This method handles the network communication for receiving the appropriate answer of the user queries. 
 \textbf{getAnswer:} This method is used by other classes to display the recived answer from the servers.
+
+\section{Project overview:}
+Relevium is a mobile application with built in application assistant which leads to smoother and easier user experience. The application mainly focus on the user's safety through collecting real time data only in the disastrous situations eg: (Hurricanes, earthquakes, etc) to help the user to safely escape or ping his/her location to notify the  authorities for rescue, or it can be used to access list of the nearby shelters and potential danger zones to be away from. The app also can be used as messaging application with the nearby users during the disaster to request nearby help or even a pickup if your car got jammed.
+
+
+% software).$>$

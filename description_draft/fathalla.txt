@@ -1,0 +1,56 @@
+\subsection{Client Class Definition:}
+\textbf{Client Class:}  Is the root class in the client which responsible for establishing connection with the server.
+
+\textbf{Methods definition:}
+\textbf{ConnectToServer():}  Used to establish http connection with the server.
+
+
+
+\subsection{Server Class Definition:}
+
+\textbf{Server Class:}  Count connected clients to the server.Also contains Database Class and Agent Class which has a composition relation with the server. 
+
+\textbf{Methods definition:}
+\textbf{ListenToConnection():}  used to get the requested connection from client.
+
+\subsection{Database Class Definition:}
+\textbf{Database Class:}The database class, is the class responsible for connect the server to the database.Also Database Class contains two sub-classes which is ChatDatabase and UserDatabase.
+
+\textbf{Methods definition:}
+\textbf{ConnectToDatabase():} Used to connect to the database.
+
+\subsection{ChatDatabase Class Definition:}
+\textbf{Database Class:} Use connection created to take message sent from user to database to store it and show it to the user again while chatting.
+
+\textbf{Methods definition:}
+\textbf{reciveMessageFromUser():} Used to get message from the user .
+\textbf{saveNewMessageToDatabase():} Used to save new  message from the user to database.
+\textbf{retriveMessageFromDatabase():} Used to get message from the database .
+\textbf{sendMessageToUser():} Used to send message saved on database to the user .
+
+\subsection{UsersDatabase Class Definition:}
+\textbf{UsersDatabase Class:} Used to identify that information entered are correct(user credentials)
+
+\textbf{Methods definition:}
+\textbf{receiveRequest():} Used to receive connection request from user.
+\textbf{sign-in():} Used to sign in to the app using information has entered before by user .
+\textbf{sign-out():} Used to sign out from the app.
+\textbf{register():} Used to register a new account to the app by Fill all text fields showed to user.
+\textbf{deleteAccount():} Used to delete account that user created.
+\textbf{editAccount():} Used to edit account details or data that entered when user register.
+\textbf{retriveAccountData():} Used to show user data.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
