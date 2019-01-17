@@ -1,6 +1,10 @@
+\textbf{Objectives:}
+
+Our main objective is to reduce the number of deaths, injuries and impact from disasters and increase local community and civil society capacity to address the most urgent situations of vulnerability. We also provide individuals, families, and their neighbors with the information they need to stay safe anywhere, anytime. We were given the responsibility to ensure humanity safety and stabilization of the communication between individuals during disasters.
+
 \textbf{Client Class Definition:}
 }
-\textbf{Client class:} is the root class in the client which responsible for establishing connection with the server and instantiate  a user object to access user info and it populate ReleumApp class 
+\textbf{Client class:} is the root class in the client which responsible for establishing connection with the server and instantiate  a user object to access user info and it populate ReleviumAPP class 
 
 \textbf{Methods definition:}
 
@@ -16,18 +20,18 @@
 
 \textbf{initializeAgent():} linked to assistant button and used to connect to the agent and populate to new sub-activity to view the agent.
 \textbf{initializeChat():} linked to Chat button and used to populate to the Chatting activity and it will use communication protocols defined in communication class.
-\textbf{initialzeMap():} linked to Map button and used to populate to the Map activity and it will use communication protocols defined in communication class.
+\textbf{initializeMap():} linked to Map button and used to populate to the Map activity and it will use communication protocols defined in communication class.
 
 \textbf{Communication Class Definition:}
 
-\textbf{P2PConnectivity:} is the class used to handle the communication between the server and the client or  provides an easier way to create and manage sessions between users without internet connection, only via Wi-Fi or the Bluetooth. The class is inherited by map and chatting class.
+\textbf{Communication:} is the class used to handle the communication between the server and the client or  provides an easier way to create and manage sessions between users without internet connection, only via Wi-Fi or the Bluetooth. The class is inherited by map and chatting class.
 
 \textbf{Methods definition:}
 
 \textbf{makeP2PConnection():} is used to establish peer to peer connection with other mobile device.
-\textbf{disconnetP2PConnection():} is used to disconnect from established peer- to-peer connection.
+\textbf{disconnectP2PConnection():} is used to disconnect from established peer- to-peer connection.
 \textbf{makeConnection():} is used to handle  requests between the client and the server or an API server
-\textbf{disconnetConnection():} is used to disconnect from established connection.
+\textbf{disconnectConnection():} is used to disconnect from established connection.
 \textbf{receiveData(): } used to receive data from other device that connected with.
 \textbf{sendData(): } used to send data to other device that  connected with.
 
@@ -113,4 +117,47 @@ The class will be called by controller by default after the user log-in as a sub
 \textbf{startVoiceSynthesis():} used to start Voice Synthesis operation and start receiving text to convert it to human voice 
 \textbf{Synthesise():} used to apply Synthesis algorithms and convert text to human voice
 \textbf{stopVoiceSynthesis():} used to release Voice Synthesis resources
+
+
+
+
+
+
+
+
+
+\subsection{Chatbot-RNN}
+\begin{frame}{Chatbot-RNN}
+
+\only<1-3>{
+\begin{itemize}[<+->]
+
+
+\item A  chatbot powered by deep learning and trained on data from Reddit. Built on TensorFlow v1.4.0 and Python v3.5.1.
+
+\item The chatbot is based on recurrent neural network architecture which processes input sequences and questions, forms episodic memories, and generates relevant answers.
+
+\item Questions trigger an iterative attention process which allows the model to condition its attention on the inputs and the result of previous iterations. These results are then reasoned over in a hierarchical recurrent sequence model to generate answers.
+\end{itemize}
+}
+
+\only<4-8>{
+\begin{itemize}
+\item The DMN can be trained end-to-end and obtains state-of-the-art results on several types of tasks and datasets:
+
+\begin{enumerate}
+    \item<5-> Question answering (Facebook's bAbI dataset). 
+    \item<6-> Text classification for sentiment analysis\\(Stanford Sentiment Treebank).
+    \item<7-> Sequence modeling for part-of-speech tagging\\ (WSJ-PTB).
+\end{enumerate}
+\item<8-> The training for these different tasks relies exclusively on trained word vector representations and input-question-answer triplets.
+\end{itemize}
+
+}
+
+\only<9>
+{
+\centering\includegraphics[width=.6\textwidth]{ml_imgs/dmn_crop.jpg}
+}
+\end{frame}
 

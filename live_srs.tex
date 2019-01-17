@@ -40,8 +40,8 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.5}
-\date{\today}
+\def\myversion{0.7}
+\date{January 17, 2019}
 %\title{%
 
 %}
@@ -69,11 +69,11 @@
         \vspace{1cm}
         % Prepared by $<$author$>$\\
         Prepared by\\
-        Abd Elrahman Solyman - 
+        Abdelrahman Solyman - 
         Ahmed Samir \\
         Mahmoud Khaled -
         Mohamed ELTorky \\ 
-        Mohamed Fathallah -
+        Mohamed Fathalla -
         Omar Mohamed\\
         
         \vspace{1cm}
@@ -85,15 +85,18 @@
         % Arab Academy for Science, Technology \& Maritime Transport\\
         College of Computing \& Information Technology\\
         \vspace{1.2cm}
-        \today\\
+      January 17, 2019  \\
     \end{bfseries}
 \end{flushright}
 
+% \tableofcontents
+% \begingroup
+% \let\clearpage\relax
+% \listoffigures
+% \endgroup
+
 \tableofcontents
-\begingroup
-\let\clearpage\relax
 \listoffigures
-\endgroup
 
 
 \newpage
@@ -107,19 +110,23 @@
 	    Name & Date & Reason For Changes & Version\\
         \hline
 	   % 21 & 22 & 23 & 24\\
-	   Sample SRS & September 23, 2018 & __ & v0.1\\
+	   sample.pdf & September 23, 2018 & __ & v0.1\\
         \hline
-        Agent Specifications & November 27, 2018 & __ & v0.2\\
+        spec.pdf & November 27, 2018 & Agent Specifications & v0.2\\
         \hline
-        Illustrations Draft & December 23, 2018 & __ & v0.3\\
+        illustrations.pdf & December 23, 2018 & Illustrations Draft & v0.3\\
         \hline
-        Populating Appendix & January 10, 2018 & __ & v0.4\\
+        appendix.pdf & January 10, 2019 & Populating Appendix & v0.4\\
         \hline
-        Diagrams Revision & January 13, 2018 & __ & v0.5\\
+        revision.pdf & January 12, 2019 &  Diagrams Revision & v0.5\\
+        \hline
+        mocks.pdf & January 13, 2019 & Design Mocks & v0.6\\
+        \hline
+        review.pdf & January 16, 2019 & Comprehensive Review & v0.7\\
         \hline
 	   % 31 & 32 & 33 & 34\\
-	   & & & \\
-        \hline
+	   %& & & \\
+        % \hline
     \end{tabular}
 \end{center}
 
@@ -133,14 +140,18 @@
 
 The purpose of this document is to give a detailed description of the requirements for the ``Relevium" software. It will illustrate the purpose and complete declaration for the development of system. It will also explain system constraints, interface and interactions with other external applications.
 
+\section{Document Conventions}
 % $<$Describe any standards or typographical conventions that were followed when 
 % writing this SRS, such as fonts or highlighting that have special significance.  
 % For example, state whether priorities  for higher-level requirements are assumed 
 % to be inherited by detailed requirements, or whether every requirement statement 
 % is to have its own priority.$>$
 
-% [TODO]
+\begin{itemize}
+    \item Crow notation is used to describe Entity-Relationship diagrams.
+\end{itemize}
 
+% \begin{center}\includegraphics[height=0.3\textheight]{img3/ERD-Notation.jpg}\end{center}
 \section{Intended Audience and Reading Suggestions}
 % $<$Describe the different types of reader that the document is intended for, 
 % such as developers, project managers, marketing staff, users, testers, and 
@@ -150,7 +161,6 @@ The purpose of this document is to give a detailed description of the requiremen
 % each reader type.$>$
 
 This document is primarily intended to be proposed to Dr. Mohamed Magdy for his approval and a reference for developing the first version of the system for the development team.
-
 \section{Project Scope}
 % $<$Provide a short description of the software being specified and its purpose, 
 % including relevant benefits, objectives, and goals. Relate the software to 
@@ -162,16 +172,69 @@ A natural disaster is a sudden event that causes widespread destruction, lots of
 The project aims to develop mobile application that enhance the
 communication between people who are in danger using chatting groups, and managing disaster by recommending an evacuation plan in addition supporting virtual assistant based on NLP.
 
-\section{References}
 % $<$List any other documents or Web addresses to which this SRS refers. These may 
 % include user interface style guides, contracts, standards, system requirements 
 % specifications, use case documents, or a vision and scope document. Provide 
 % enough information so that the reader could access a copy of each reference, 
 % including title, author, version number, date, and source or location.$>$
 
-[TODO]
 
+\section{Used Technologies}
 
+\begin{itemize}
+    \item \textit{Android Studio} as our \textbf{IDE} for developing the application prototype.
+    \item Design of project diagrams we used \textit{Lucidchart} and \textit{StarUML}.
+    \item Documentation \& Presentation are written in \LaTeX \hspace{0.2mm} document preparation system.
+\end{itemize}
+
+% \section{Implementation}
+    
+% \section{References}
+
+% https://github.com/MohamedEL-Torky/Prototype1
+
+\newpage
+\section{Prototype}
+
+  \subsection{Expected Design}
+  \begin{figure}[ht!]
+    \centering
+    \includegraphics[height=0.3\textheight]{AppDesign/expectedDesign/1.png}
+    \qquad
+    \includegraphics[height=0.3\textheight]{AppDesign/expectedDesign/2.png}
+    \caption{Expected Relevium Home Screen}%
+    \label{fig:Expected_Draft}%
+  \end{figure}
+  
+  \begin{figure}[ht!]
+  \qquad\qquad\qquad\qquad
+  \centering\includegraphics[height=0.3\textheight]{AppDesign/expectedDesign/3.png}\newline
+  \caption[Expected Application Feature List]{Expected Application Feature List}%
+  \end{figure}
+  \newpage
+  
+\subsection{Actual Prototype}
+
+  \begin{figure}[ht!]
+    \centering
+    \includegraphics[height=0.6\textheight]{AppDesign/actualDesign/AppMain.jpg}
+    \qquad
+    \includegraphics[height=0.6\textheight]{AppDesign/actualDesign/Map.jpg}
+    \caption[Actual Relevium Home Screen \& Map]{Actual Relevium Home Screen \& Map}%
+    \label{fig:Actual_Draft1}%
+  \end{figure}
+
+\newpage
+  \begin{figure}[ht!]
+    \centering
+    \includegraphics[height=0.6\textheight]{AppDesign/actualDesign/AgentBlank.jpg}
+    \qquad
+    \includegraphics[height=0.6\textheight]{AppDesign/actualDesign/AgentResponse.jpg}
+    \caption[Actual Relevium Home Agent]{Actual Relevium Agent}%
+    \label{fig:Actual_Draft2}%
+  \end{figure}
+  
+  \newpage
 
 % \chapter{Overall Description}
 \chapter{System Architecture}
@@ -234,7 +297,7 @@ Our application run on mobile devices with very limited hardware specs which may
 \subsection{Schedule Constraints}
 The project has a relatively small time-frame. Therefore, the time is a major concern. The project should be functioning and completed by the mid of 2019.
 
-\subsection{Policy constrains}
+\subsection{Policy \& Privacy Constrains}
 The application tries to use all the available mobile resource in disastrous times to save all the user in potential danger eg: using the phone while it's on standby mode to alert the user or use mobile flash to help users who are stuck under derbies. Although we do our best to save the user life, this does not mean we will prevent their death 100\%, which is must be stated to clear us from any charges.
 
 % % \section{User Documentation}
@@ -265,7 +328,7 @@ Another assumption is that the GPS components in all phones work in the same way
     \includegraphics[height=7cm]{appImages/EPD1.jpg}
     \qquad
     \includegraphics[height=7cm]{appImages/EPD2.jpg}
-    \caption[Emergency preparedness \& Disaster Survival Guide]{Emergency preparedness \& Disaster Survival Guide is paid mobile application that cover almost all the how to survive a disastrous situation with simple  illustrations and written guides.}%
+    \caption[Emergency Preparedness \& Disaster Survival Guide]{Emergency Preparedness \& Disaster Survival Guide is paid mobile application that cover almost all the how to survive a disastrous situation with simple  illustrations and written guides.}%
     \label{fig:app1}%
 \end{figure}
 
@@ -365,81 +428,19 @@ Another assumption is that the GPS components in all phones work in the same way
 \section{Relevium Watchful Smart Helper}
 Communicate with the application through phone's built-in assistant.
 
-
 \subsection{Description and priority}
+We create intents in the agent that map user input to responses. In each intent, we define examples of user requests that can trigger the intent, what to extract from the request, and how to respond.
 
-\subsubsection{Intent}
+Generally, an intent represents one dialog turn within the conversation. The agent would match that input to its corresponding intent and return the response you defined within that intent. The agent’s response usually prompts users for another utterance, which your agent will attempt to match another intent, and the conversation continues.
+\subsection{Usability}
+Relevium project uses Watchful Smart Helper as a advanced way to communicate with user. When the user log-in user will receive a welcome intent from pre-populated text responses from the responses which has already been trained.
 
-To define how conversations work, we create intents in the agent that map user input to responses. In each intent, we define examples of user requests that can trigger the intent, what to extract from the request, and how to respond.
+\section{Paramedic User}
+\subsection{Description and priority}
+One of the most important features During the disaster. When the user register to our application user will be asked to fill a form to prove that the user a paramedic or not (optional), and if user fill this field, then user required to prove that by a picture for Work identity or any document Prove that user have the right to work with a paramedic degree.
 
-Generally, an intent represents one dialog turn within the conversation. The agent would match that input to its corresponding intent and return the response you defined within that intent. The agent's response usually prompts users for another utterance, which your agent will attempt to match to another intent, and the conversation continues.
-
-
-
-\subsubsection{Intent Components}
-
-\begin{itemize}
-    \item Intent name: The name of the intent. The intent name is passed to your fulfillment and identifies the matched intent.
-
-    \item Training phrases: Examples of what users can say to match a particular intent. Agent automatically expands these phrases to match similar user utterances.
-
-    \item Action and parameters: Defines how relevant information (parameters) are extracted from user utterances. Examples of this kind of information include dates, times, names, places, and more. You can use parameters as input into other logic, such as looking up information, carrying out a task, or returning a response.
-
-    \item Response: An utterance that's spoken or displayed back to the user.
-\end{itemize}
-
-
-\subsubsection{Primary Intents}
-
-\begin{enumerate}
-    \item Welcome Intent: When the Welcome Intent is matched, agent will respond with one of the pre-populated text responses from the \textbf{Responses}. Each time this intent is matched, agent returns one of the responses. For each subsequent matching, agent selects a different response until all responses have been used. then, it begins again choosing responses randomly.
-    
-    \item Fallback Intent: Triggers if a user's input is not matched by any of the regular intents or if it matches the training phrases.
-    \item Follow-up Intent: provide a simple way to shape a conversation without having to create and manage contexts manually. These special intents are nested under their parent intent and are designed to handle preset replies from the user.
-    \begin{enumerate}
-        \item \textbf{Yes}: ``\textit{yes}", ``\textit{do it}", ``\textit{sure}, ``\textit{exactly}", ``\textit{confirm}", ``of \textit{course}", ``\textit{sounds good}", ``\textit{that's correct}", ``\textit{I don't mind}", ``\textit{I agree}".
-        \item \textbf{No}: ``\textit{no}", ``\textit{don't do it}", ``\textit{definitely not}", ``\textit{not really"}, ``\textit{thanks but no}", ``\textit{not interested}", ``\textit{I don't think so}", ``\textit{I disagree}", ``\textit{I don't want that}".
-        \item \textbf{Later}: ``\textit{later}", ``\textit{not yet}", ``\textit{ask me later}", ``\textit{not}", ``\textit{next time}", ``\textit{I said later}", ``\textit{some other time}", ``\textit{do it later}", ``\textit{not at the moment}", ``\textit{not at this time}".
-        \item \textbf{Cancel}: ``\textit{cancel}", ``\textit{stop}", ``\textit{dismiss}", ``\textit{skip}", ``\textit{forget that}", ``\textit{stop it}", ``\textit{never mind}", ``\textit{do nothing}", ``\textit{just forget about it}", ``\textit{cancel that}".
-        \item \textbf{More}: ``\textit{more}", ``\textit{more results}", ``\textit{anything else}", ``\textit{other results}", ``\textit{what else}", ``\textit{are there more}", ``\textit{tell me more}", ``\textit{show me more}", ``\textit{more information}".
-        \item \textbf{Next}: ``\textit{next}", ``\textit{next page}", ``\textit{go forward}", ``\textit{show me next}", ``\textit{following result}", ``\textit{switch to the next}", ``\textit{go to the next page}", ``\textit{read the next results}", ``\textit{show me the next page}", ``\textit{show me the following results}".
-        \item \textbf{Previous}: ``\textit{back}", ``\textit{previous}", ``\textit{go back}", ``\textit{previous page}", ``\textit{previous results}", ``\textit{return to the previous}", ``\textit{return to previous page}", ``\textit{go to the previous page}", ``\textit{go back to previous results}", ``\textit{read out the previous results}".
-        \item \textbf{Repeat}: ``\textit{repeat}", ``\textit{repeat it}", ``\textit{come again}", ``\textit{do it again}", ``\textit{say it again}", ``\textit{say the same again}", ``\textit{please repeat that}", ``\textit{repeat these results}", ``\textit{could you repeat that}", ``\textit{repeat what you've just said}".
-    \end{enumerate}
-    
-\end{enumerate}
-
-
-\subsubsection{Context}
-
-Contexts represent the current state of a user's request and allow your agent to carry information from one intent to another. You can use combinations of input and output contexts to control the conversational path the user takes through your dialog.
-
-Contexts let agent control conversation flows by letting agent define specific states that a conversation must be in for an intent to match. Normally, Agent matches an intent if its training phrases closely resemble the user utterance. However, when you apply contexts to an intent, Agent will only consider that intent for matching if the context is active.
-
-Contexts are very helpful in controlling order of intent matching \& creating different outcomes for intents with the same training phrases.
-
-There are two types of context that let you activate and deactivate contexts and can control the flow of your conversation:
-
-\begin{itemize}
-
-\item Input contexts: When applied to an intent, an input context tells agent to match the intent only if the user utterance is a close match and if the context is active.
-\item  Output contexts: When applied to an intent, an output context tells agent to activate a context if it's not already active or to maintain the context after the intent is matched.
-\end{itemize}
-
-
-
-\subsubsection{Entity}
-Entities are the agent's mechanism for identifying and extracting useful data from natural language inputs.
-
-While intents allow the agent to understand the motivation behind a particular user input, entities are used to pick out specific pieces of information that the users mention. Any important data we want to get from a user's request will have a corresponding entity.
-
-% [TODO add our entities]
-
-
-\subsubsection{Event}
-
-Events allow agent to invoke intents based on something that has happened instead of what a user communicates. Agent supports events from several platforms (like Google Assistant, Slack, and more) based on actions users take on those platforms.
-
+\subsection{Guidelines}
+There may be conditions under which the paramedic user will decide to get away or to be there to help others,there are no conditions for user to follow,he has full freedom to choose what he wants to do by helping others or escape in case of danger.
 
 
 \newpage
@@ -454,11 +455,11 @@ Alternatively referred to as \textbf{speech recognition, voice recognition} is a
 Today, this is done on a computer with \textbf{ASR (automatic speech recognition)} software programs. Many ASR programs require the user to "train" the ASR program to recognize their voice so that it can more accurately convert the speech to text. For example, you could say "open Internet" and the computer would open the Internet browser.
 The first ASR device was used in 1952 and recognized single digits spoken by a user (it was not computer driven).
 
-Today, ASR programs are used in many industries, including healthcare, military (e.g., F-16 fighter jets), telecommunications, and personal computing (i.e. hands-free computing).
+Today, ASR programs are used in many industries, including health care, military (e.g., F-16 fighter jets), telecommunications, and personal computing (i.e. hands-free computing).
 
 \subsection{Methodology}
 
-Voice recognition software on computers requires that analog audio be converted into digital signals, known as analog-to-digital conversion. For a computer to decipher a signal, it must have a digital database, or vocabulary, of words or syllables, as well as a speedy means for comparing this data to signals. The speech patterns are stored on the hard drive and loaded into memory when the program is run. A comparator checks these stored patterns against the output of the A/D converter; an action called pattern recognition.
+Voice recognition software on computers requires that analog audio be converted into digital signals, known as analog-to-digital conversion. For a computer to decipher a signal, it must have a digital database, or vocabulary, of words or syllables, as well as a speedy means for comparing this data to signals. The speech patterns are stored on the hard drive and loaded into memory when the program is run. A comparator checks these stored patterns against the output of the A/D converter, an action called pattern recognition.
 
 In practice, the size of a voice recognition program's effective vocabulary is directly related to the random access memory capacity of the computer in which it is installed. A voice recognition program runs many times faster if the entire vocabulary can be loaded into RAM, as compared with searching the hard drive for some of the matches. Processing speed is critical, as well, because it affects how fast the computer can search the RAM for matches.
 
@@ -467,9 +468,6 @@ In practice, the size of a voice recognition program's effective vocabulary is d
 Relevium project uses voice recognition as an alternative way to carry out the communication with the user, we use it because of sometimes the user in critical situations won’t be able to use the typing method to use the Relevium mobile app, it also enhance the communication and offer the user a variety of different possible ways to use them as input method or interaction ways with our application.
 
 \newpage
-
-
-
 
 \section{Evacuation plan}
 Find shortest safe path to evacuate and override traffic rules if necessary.
@@ -594,7 +592,6 @@ The usability of this feature in Relevium project will occur when the infrastruc
 
 
 
-
 \newpage
 \section{Web crawler to collect data from websites}
 Monitor Twitter, Reddit and other news aggregators for any events.
@@ -673,9 +670,7 @@ User agrees by using this system that under no circumstances or any theories of 
 % security or privacy certifications that must be satisfied.$>$
 This application will have users credentials like (mobile numbers, addresses ..etc)
 So it must have encrypted personal data and the chat between users should be encrypted too.
-Some of the supposed algorithms to be used are : \textbf{AES-256, ARC4, RSA-2048}\\
-
-
+Some of the supposed algorithms to be used are : \textbf{AES-256, ARC4, RSA-2048}
 % \hrulefill
 
 \begin{itemize}
@@ -754,7 +749,7 @@ This mobile app should guarantee availability as it will be available every time
 
 \end{itemize}
 
- \textbf{Internal User Class}  The internal client class is the class responsible for all the clients who registered through our servers, it handles the user log-in process, register and credentials loss.
+ \textbf{Internal User Class} The internal client class is the class responsible for all the clients who registered through our servers, it handles the user log-in process, register and credentials loss.
  
  \textbf{External User Class} The external client class is the class responsible for all the clients who sign in through external API(s) eg: (Gmail, Facebook, etc...) and get their token and save it in our servers for future log-in. The class also get the data of the user from the external API after claiming the token, finally it redirect the new users to the register process with completed fields of their claimed data from the external API. If the external client did register before, then he/she will be sent to the Home screen of Relevium application.
 % end of description here
@@ -762,19 +757,40 @@ This mobile app should guarantee availability as it will be available every time
 %%% continue description 
 % \subsection{Controller Class Definition:}
 
-
-     \textbf{Controller class:} is the main Activity in the mobile app by which other activity will be called,  First of all, the Controller will check the connection status as it initialed, if there is a connection available, if so it will set \textbf{connectionStatus} to be true, else it will be false. Then \textbf{User class} will be called to allow user to login, or register, then create user object, the user object will be used to display user info on the screen, or edit them.
-The \textbf{mainView} which controlled by the controller should has multiple buttons, map ``initialized" by default on sub-Activity, chat, and the Assistant, and when a user push one of these buttons, activity will populate to a new sub-activity, that handle the requested function.
+\textbf{Client Class:} Is the root class in the client which responsible for establishing connection with the server and instantiate  a user object to access user info and it populate ReleviumAPP class.
 
 \begin{itemize}
 % \textbf{Methods definition:}
 
-\item[$\nabla$] \textbf{getConnectionStatus()} used to return connection Status.
-\item[$\nabla$] \textbf{initializeAgent()} used to connect to the agent and populate to new sub-activity to view the agent.
-\item[$\nabla$] \textbf{initializeVoiceRecogination()} used to connect to the voice Recognition and perform the requested command.
-\item[$\nabla$] \textbf{initializeP2PConnectivity()} used to populate to the P2PConnectivity activity.
-\item[$\nabla$] \textbf{initialzeMap()} used to populate to the map activity.
+\item[$\nabla$] \textbf{connectToServer()} Used to establish http connection with the server.
+\item[$\nabla$] \textbf{getUser()} Used to get user object by the others classes.
+\item[$\nabla$] \textbf{getConnectionStatus()} Used to get connection status by other classes.
 \end{itemize}
+
+\textbf{ReleviumAPP Class:} is the main Activity in the mobile app by which other activity will be called,  First of all, the class will check the connection status as it initialed, if there is a connection available, if so it will set \textbf{connectionStatus} to be true, else it will be false. The \textbf{ReleviumApp} which will has multiple buttons, map "initialized by default on sub-Activity, chat, and the Assistant, and when a user push one of these buttons, activity will populate to a new sub-activity, that handle the requested function.
+
+\begin{itemize}
+% \textbf{Methods definition:}
+
+\item[$\nabla$] \textbf{initializeAgent()} Linked to assistant button and used to connect to the agent and populate to new sub-activity to view the agent.
+\item[$\nabla$] \textbf{initializeChat()} Linked to Chat button and used to populate to the Chatting activity and it will use communication protocols defined in communication class.
+\item[$\nabla$] \textbf{initializeMap()} Linked to Map button and used to populate to the Map activity and it will use communication protocols defined in communication class.
+\end{itemize}
+
+\textbf{Communication:} is the class used to handle the communication between the server and the client or  provides an easier way to create and manage sessions between users without internet connection, only via Wi-Fi or the Bluetooth. The class is inherited by map and chatting class.
+
+\begin{itemize}
+
+% \textbf{Methods definition:}
+
+\item[$\nabla$] \textbf{makeP2PConnection()} is used to establish peer to peer connection with other mobile device.
+\item[$\nabla$] \textbf{makeConnection()} is used to handle  requests between the client and the server or an API server.
+\item[$\nabla$] \textbf{disconnectP2PConnection()} is used to disconnect from established connection.
+\item[$\nabla$] \textbf{disconnetConnection()} is used to disconnect from established connection.
+\item[$\nabla$] \textbf{receiveData()} used to receive data from other device that connected with.
+\item[$\nabla$] \textbf{sendData()} used to send data to other device that  connected with.
+\end{itemize}
+\clearpage
 
 % \subsection{Map Class Definition:}
 
@@ -792,6 +808,7 @@ The class will be called by controller by default after the user log-in as a sub
 \item[$\nabla$] \textbf{calcLongitude()} used to  set the Longitude Attribute using the GPS.
 \end{itemize}
 
+
 % \subsection{Chatting Class Definition:}
 
 \textbf{Chatting Class:} is the class used to handle chatting between users online and offline, so it inherit P2PConnectivity to work in offline state, the user join a group based on his location to chat with other users in the same area to ask for help or help others users. it will operate as sup-activity when the user push the chat button on the main view.
@@ -801,45 +818,74 @@ The class will be called by controller by default after the user log-in as a sub
 \begin{itemize}
 \item[$\nabla$]  \textbf{joinChatGroup()} used to connect user to a chat group based on his location.
 \item[$\nabla$] \textbf{disconnectFromGroup()} used to disconnect form chat group.
-\item[$\nabla$] \textbf{receiveData()} used to receive data from the chat group to print it on the user screen.
-\item[$\nabla$] \textbf{sendata()} used to send data to chat group.
 \end{itemize}
 
-% \subsection{P2PConnectivity Class Definition:}
 
-\textbf{P2PConnectivity:} is the class used to  provides an easier way to create and manage sessions between users without internet connection, only via Wi-Fi or the Bluetooth. the class is inherited by map and chatting class.
-
-\begin{itemize}
-
-% \textbf{Methods definition:}
-
-\item[$\nabla$] \textbf{makeP2PConnection()} is used to establish peer to peer connection with other mobile device.
-\item[$\nabla$] \textbf{disconnectP2PConnection()} is used to disconnect from established connection.
-\item[$\nabla$] \textbf{receiveData()} used to receive data from other device that connected with.
-\item[$\nabla$] \textbf{sendData()} used to send data to other device that  connected with.
-\end{itemize}
 \clearpage
 
 \begin{figure}[ht!]
     % \centering
     % \includesvg[width=\textwidth]{img2/Class1DIV.svg}
     % \hspace{-2cm}\includesvg[scale=0.4]{img2/ClassController.svg}
-    \includegraphics[height=.95\textheight]{img3/ClassDClass1DIV.pdf}
+    \includegraphics[height=.93\textheight]{img3/ClassDClass1DIV.pdf}
     \caption{Class Diagram - Server Domain Logic}
     \label{fig:classdiagram2}
 \end{figure}
 
-%% Type description here
+\textbf{Client Agent Class:} the class the handle connection between the online agent if the online connection is available, but if the online connection is not available the agent will perform the prediction on the latest downloaded model.
 
-% \subsection{Agent Class Definition:}
-\textbf{Agent Class:} The agent class, is the class responsible for sending the user's queries to our Relevium watchful assistant servers and receive the answer from it.
+\begin{itemize}
+% \textbf{Methods definition:}
+
+\item[$\nabla$] \textbf{sendQuery()} used to send Query entered from user to server Agent.
+\item[$\nabla$] \textbf{receiveResponse()} used to receive Response from server Agent.
+\item[$\nabla$] \textbf{getLatestModel()} used to download current working version model from the server agent.
+\item[$\nabla$] \textbf{predict()} used to perform classification on the locally downloaded model.
+\item[$\nabla$] \textbf{setAnswer()} used to set the answer to the value resulted from predict method.
+\item[$\nabla$] \textbf{getVoiceInput()} used to access voice input and it used by inherited classes.
+\item[$\nabla$] \textbf{getTextInput()} used to access text input and it used by inherited classes
+\item[$\nabla$] \textbf{setVoiceOutput()} used to set voice output and mainly used by speech synthesis.
+\item[$\nabla$] \textbf{setTextOutput()} used to set text output and mainly used by natural language generation.
+\end{itemize}
+
+%% Type description here
+\textbf{NaturalLanguageProcessing Class:} Is the class that process input text or, voice that converted to text and generate a sparse matrix to apply it a classification model. it also handle text pre-processing.
 \begin{itemize}
 	% \textbf{Methods definition:}
 
-	\item[$\nabla$] \textbf{sendQuery():} This method handles the network communication for sending the user query to our servers .
-	\item[$\nabla$] \textbf{receiveResponse():} This method handles the network communication for receiving the appropriate answer of the user queries. 
-	\item[$\nabla$] \textbf{getAnswer():} This method is used by other classes to display the received answer from the servers.
+	\item[$\nabla$] \textbf{tokenize():} Used to convert the corpus to token.
+	\item[$\nabla$] \textbf{stemming():} Used to convert words to its origin example ``Visiting" will converted to be ``Visit".
+	\item[$\nabla$] \textbf{removeStoppingWord():} used to remove unwanted words from text.
 \end{itemize}
+
+\textbf{VoiceRecognition Class:} \textbf{voice recognition class:} is the class the handle and process the input voice and converting it to readable text by using Neural network based model.
+\begin{itemize}
+	% \textbf{Methods definition:}
+
+	\item[$\nabla$] \textbf{trainModel():} Used to train model on training set.
+	\item[$\nabla$] \textbf{startVoiceRecognition():} Used to set the voice recognition to listening mode.
+	\item[$\nabla$] \textbf{recognize():} Used to recognize and convert voice to text.
+	\item[$\nabla$] \textbf{stopVoiceRecognition():} Used to release Voice Recognition resources.
+\end{itemize}
+
+\textbf{NaturalLanguageGeneration Class:} Is the class that responsible for creating and generating human language text from a machinery text.
+\begin{itemize}
+	% \textbf{Methods definition:}
+
+	\item[$\nabla$] \textbf{setLexicon():} Generate tokens based on specific context.
+	\item[$\nabla$] \textbf{realizeSentence():} Used to realize and generate accurate pronunciation to the user.
+\end{itemize}
+
+\textbf{Speech Synthesis Class:} Is the class responsible for generate human voice dialog for specific context from components of words to form voice signal.
+\begin{itemize}
+	% \textbf{Methods definition:}
+
+	\item[$\nabla$] \textbf{trainModel():} Used to train model on training sets of texts.
+	\item[$\nabla$] \textbf{startVoiceSynthesis():} Used to start Voice Synthesis operation and start receiving text to convert it to human voice.
+	\item[$\nabla$] \textbf{Synthesise():} Used to apply Synthesis algorithms and convert text to human voice.
+	\item[$\nabla$] \textbf{stopVoiceSynthesis():} Used to release Voice Synthesis resources.
+\end{itemize}
+
 
 
 \clearpage
@@ -848,10 +894,48 @@ The class will be called by controller by default after the user log-in as a sub
     % \centering
     % \includesvg[width=\textwidth]{img2/Class1DIV.svg}
     % \hspace{-2cm}\includesvg[scale=0.4]{img2/ClassController.svg}
-    \includegraphics[angle=90, height=.95\textheight]{img3/ClassDiagramServerLogic.pdf}
+    \includegraphics[angle=90, height=.92\textheight]{img3/ClassDiagramServerLogic.pdf}
     \caption{Class Diagram - Server Domain Logic (cont.)}
     \label{fig:classdiagram1}
 \end{figure}
+
+
+
+
+\textbf{Client Class:} Is the root class in the client which responsible for establishing connection with the server.
+\begin{itemize}
+	% \textbf{Methods definition:}
+	\item[$\nabla$] \textbf{ConnectToServer():} Used to establish http connection with the server.
+\end{itemize}
+
+\textbf{Server Class:} Count connected clients to the server.Also contains Database Class and Agent Class which has a composition relation with the server. 
+\begin{itemize}
+	% \textbf{Methods definition:}
+	\item[$\nabla$] \textbf{ListenToConnection():} Used to get the requested connection from client.
+\end{itemize}
+
+\textbf{Database Class:} The database class, is the class responsible for connect the server to the database.Also Database Class contains two sub-classes which is ChatDatabase and UserDatabase.
+\begin{itemize}
+	% \textbf{Methods definition:}
+	\item[$\nabla$] \textbf{reciveMessageFromUser():} Used to get message from the user.
+	\item[$\nabla$] \textbf{saveNewMessageToDatabase():} Used to save new  message from the user to database.
+	\item[$\nabla$] \textbf{retriveMessageFromDatabase():} Used to get message from the database.
+	\item[$\nabla$] \textbf{saveNewMessageToDatabase():} Used to send message saved on database to the user.
+\end{itemize}
+
+\textbf{UsersDatabase Class:} Used to identify that information entered are correct (user credentials).
+\begin{itemize}
+	% \textbf{Methods definition:}
+	\item[$\nabla$] \textbf{receiveRequest():} Used to receive connection request from user.
+	\item[$\nabla$] \textbf{sign-in():} Used to sign in to the app using information has entered before by user.
+	\item[$\nabla$] \textbf{sign-out():} Used to sign out from the app.
+	\item[$\nabla$] \textbf{register():} Used to register a new account to the app by Fill all text fields showed to user.
+	\item[$\nabla$] \textbf{deleteAccount():} Used to delete account that user created.
+	\item[$\nabla$] \textbf{editAccount():} Used to edit account details or data that entered when user register.
+	\item[$\nabla$] \textbf{retriveAccountData():} Used to show user data.
+\end{itemize}
+
+
 
 
 
@@ -866,9 +950,80 @@ The class will be called by controller by default after the user log-in as a sub
 
 
 \clearpage
+
+% \textbf{Agent:}[TODO]\newline
+\textbf{Intent:} To define how conversations work, we create intents in the agent that map user input to responses. In each intent, we define examples of user requests that can trigger the intent, what to extract from the request, and how to respond.
+
+Generally, an intent represents one dialog turn within the conversation. The agent would match that input to its corresponding intent and return the response you defined within that intent. The agent's response usually prompts users for another utterance, which your agent will attempt to match to another intent, and the conversation continues.
+
+
+
+\textbf{Intent Components:} 
+
+\begin{itemize}
+    \item Intent name: The name of the intent. The intent name is passed to your fulfillment and identifies the matched intent.
+
+    \item Training phrases: Examples of what users can say to match a particular intent. Agent automatically expands these phrases to match similar user utterances.
+
+    \item Action and parameters: Defines how relevant information (parameters) are extracted from user utterances. Examples of this kind of information include dates, times, names, places, and more. You can use parameters as input into other logic, such as looking up information, carrying out a task, or returning a response.
+
+    \item Response: An utterance that's spoken or displayed back to the user.
+\end{itemize}
+
+
+\textbf{Primary Intents:}
+
+\begin{enumerate}
+    \item Welcome Intent: When the Welcome Intent is matched, agent will respond with one of the pre-populated text responses from the \textbf{Responses}. Each time this intent is matched, agent returns one of the responses. For each subsequent matching, agent selects a different response until all responses have been used. then, it begins again choosing responses randomly.
+    
+    \item Fallback Intent: Triggers if a user's input is not matched by any of the regular intents or if it matches the training phrases.
+    \item Follow-up Intent: provide a simple way to shape a conversation without having to create and manage contexts manually. These special intents are nested under their parent intent and are designed to handle preset replies from the user.
+    \begin{enumerate}
+        \item \textbf{Yes}: ``\textit{yes}", ``\textit{do it}", ``\textit{sure}, ``\textit{exactly}", ``\textit{confirm}", ``of \textit{course}", ``\textit{sounds good}", ``\textit{that's correct}", ``\textit{I don't mind}", ``\textit{I agree}".
+        \item \textbf{No}: ``\textit{no}", ``\textit{don't do it}", ``\textit{definitely not}", ``\textit{not really"}, ``\textit{thanks but no}", ``\textit{not interested}", ``\textit{I don't think so}", ``\textit{I disagree}", ``\textit{I don't want that}".
+        \item \textbf{Later}: ``\textit{later}", ``\textit{not yet}", ``\textit{ask me later}", ``\textit{not}", ``\textit{next time}", ``\textit{I said later}", ``\textit{some other time}", ``\textit{do it later}", ``\textit{not at the moment}", ``\textit{not at this time}".
+        \item \textbf{Cancel}: ``\textit{cancel}", ``\textit{stop}", ``\textit{dismiss}", ``\textit{skip}", ``\textit{forget that}", ``\textit{stop it}", ``\textit{never mind}", ``\textit{do nothing}", ``\textit{just forget about it}", ``\textit{cancel that}".
+        \item \textbf{More}: ``\textit{more}", ``\textit{more results}", ``\textit{anything else}", ``\textit{other results}", ``\textit{what else}", ``\textit{are there more}", ``\textit{tell me more}", ``\textit{show me more}", ``\textit{more information}".
+        \item \textbf{Next}: ``\textit{next}", ``\textit{next page}", ``\textit{go forward}", ``\textit{show me next}", ``\textit{following result}", ``\textit{switch to the next}", ``\textit{go to the next page}", ``\textit{read the next results}", ``\textit{show me the next page}", ``\textit{show me the following results}".
+        \item \textbf{Previous}: ``\textit{back}", ``\textit{previous}", ``\textit{go back}", ``\textit{previous page}", ``\textit{previous results}", ``\textit{return to the previous}", ``\textit{return to previous page}", ``\textit{go to the previous page}", ``\textit{go back to previous results}", ``\textit{read out the previous results}".
+        \item \textbf{Repeat}: ``\textit{repeat}", ``\textit{repeat it}", ``\textit{come again}", ``\textit{do it again}", ``\textit{say it again}", ``\textit{say the same again}", ``\textit{please repeat that}", ``\textit{repeat these results}", ``\textit{could you repeat that}", ``\textit{repeat what you've just said}".
+    \end{enumerate}
+    
+\end{enumerate}
+
+
+
+
+\textbf{Context:} Contexts represent the current state of a user's request and allow your agent to carry information from one intent to another. You can use combinations of input and output contexts to control the conversational path the user takes through your dialog.
+
+Contexts let agent control conversation flows by letting agent define specific states that a conversation must be in for an intent to match. Normally, Agent matches an intent if its training phrases closely resemble the user utterance. However, when you apply contexts to an intent, Agent will only consider that intent for matching if the context is active.
+
+Contexts are very helpful in controlling order of intent matching \& creating different outcomes for intents with the same training phrases.
+
+There are two types of context that let you activate and deactivate contexts and can control the flow of your conversation:
+
+\begin{itemize}
+
+\item Input contexts: When applied to an intent, an input context tells agent to match the intent only if the user utterance is a close match and if the context is active.
+\item  Output contexts: When applied to an intent, an output context tells agent to activate a context if it's not already active or to maintain the context after the intent is matched.
+\end{itemize}
+
+
+
+
+\textbf{Entity:} Entities are the agent's mechanism for identifying and extracting useful data from natural language inputs.
+
+While intents allow the agent to understand the motivation behind a particular user input, entities are used to pick out specific pieces of information that the users mention. Any important data we want to get from a user's request will have a corresponding entity.
+
+% [TODO add our entities]
+
+\textbf{Event:} Events allow agent to invoke intents based on something that has happened instead of what a user communicates. Agent supports events from several platforms (like Google Assistant, Slack, and more) based on actions users take on those platforms.
+
+\newpage
+
 \begin{figure}[ht!]
     \centering
-    \includegraphics[angle=0, width=\textwidth]{img2/erd1.pdf}
+    \includegraphics[angle=0, width=\textwidth]{img3/erd1.pdf}
     \caption{Entity Relationship Diagram - User}
     \label{fig:erd1}
 \end{figure}
@@ -913,7 +1068,7 @@ he can also interact with the map to navigate danger zones and safe zones(shelte
     \centering
     % \includesvg[angle=90,scale=0.8]{imgs/DFDDiagram1.svg}
     \includegraphics[angle=90, height=.95\textheight]{img3/SequenceDiagram2.pdf}
-    \caption{Sequence Diagram - Utterance Route}
+    \caption{Sequence Diagram - Utterance Process}
     \label{fig:sequence2}
 \end{figure}
 
@@ -932,11 +1087,14 @@ he can also interact with the map to navigate danger zones and safe zones(shelte
 \begin{figure}[ht!]
     \centering
     \includegraphics[angle=90, height=.95\textheight]{imgs/SequenceDiagram1.pdf}
-    \caption{Sequence Diagram - Communication Process}
+    
+    \caption{Sequence Diagram - Communication Route}
     \label{fig:sequencediagram1}
 \end{figure}
 
 \clearpage
+
+
 
 \begin{figure}[ht!]
     \centering
@@ -956,9 +1114,9 @@ he can also interact with the map to navigate danger zones and safe zones(shelte
 
 \clearpage
 \begin{figure}[ht!]
-    \centering
-    \includegraphics[height=\textheight]{gantt/gantt_month.pdf}
-    \caption{Gantt Chart - Simple View}
+    
+    \hspace{1cm}\includegraphics[height=\textheight]{gantt/gantt_month.pdf}
+    \caption{Gantt Chart - Compact View}
     \label{fig:gantt1}
 \end{figure}
 
@@ -969,10 +1127,6 @@ he can also interact with the map to navigate danger zones and safe zones(shelte
     \caption{Gantt Chart - Detailed View}
     \label{fig:gantt2}
 \end{figure}
-
-
-
-
 
 
 % \section{Appendix A: Glossary}
